@@ -8,9 +8,10 @@ from pydantic import Field, BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class LanguageAgentConfig(BaseModel):
-    """Configuration for individual language agents."""
+class AgentConfig(BaseModel):
+    """Configuration for individual agents."""
     name: str
+    emoji: str
     instructions: str
 
 
@@ -44,8 +45,8 @@ class Settings(BaseSettings):
     # Creative settings
     creative_config: CreativeConfig = CreativeConfig()
 
-    # Language agent configurations
-    language_configs: Dict[str, LanguageAgentConfig] = {}
+    # Agent configurations
+    agent_configs: Dict[str, AgentConfig] = {}
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -85,20 +86,21 @@ class Settings(BaseSettings):
             if "creative" in config:
                 settings_dict["creative_config"] = CreativeConfig(**config["creative"])
 
-            if "languages" in config:
-                language_configs = {}
-                for key, lang_config in config["languages"].items():
-                    language_configs[key] = LanguageAgentConfig(**lang_config)
-                settings_dict["language_configs"] = language_configs
+            if "agents" in config:
+                agent_configs = {}
+                for key, agent_config in config["agents"].items():
+                    agent_configs[key] = AgentConfig(**agent_config)
+                settings_dict["agent_configs"] = agent_configs
 
         return cls(**settings_dict)
 
-    def get_agent_config(self, agent_type: str) -> LanguageAgentConfig:
+    def get_agent_config(self, agent_type: str) -> AgentConfig:
         """Get configuration for a specific agent type."""
-        return self.language_configs.get(
+        return self.agent_configs.get(
             agent_type,
-            LanguageAgentConfig(
-                name="Default Agent", 
+            AgentConfig(
+                name="Default Agent",
+                emoji="🤖",
                 instructions=self.agent_default_instructions
             ),
         )

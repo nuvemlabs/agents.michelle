@@ -48,11 +48,24 @@ simple: ## Run the simple agent with configuration
 	@echo "$(YELLOW)========================================$(NC)"
 
 .PHONY: pfeiffer
-pfeiffer: ## Run the multi-language Pfeiffer agent system
-	@echo "$(GREEN)Running Pfeiffer multi-language agent...$(NC)"
+pfeiffer: ## Run the Michelle Pfeiffer agent system
+	@echo "$(GREEN)Running Michelle Pfeiffer agent system...$(NC)"
 	@echo "$(YELLOW)========================================$(NC)"
 	$(PYTHON) $(SRC_DIR)/pfeiffer.py
 	@echo "$(YELLOW)========================================$(NC)"
+
+.PHONY: interactive
+interactive: ## Run Michelle Pfeiffer agent system in interactive mode
+	@echo "$(GREEN)Starting Michelle Pfeiffer interactive system...$(NC)"
+	$(PYTHON) $(SRC_DIR)/pfeiffer.py --interactive
+
+.PHONY: pfeiffer-interactive
+pfeiffer-interactive: interactive ## Alias for interactive Michelle Pfeiffer system
+
+.PHONY: test-handoffs
+test-handoffs: ## Test the handoff functionality between agents
+	@echo "$(GREEN)Testing agent handoffs...$(NC)"
+	$(PYTHON) test_system.py
 
 .PHONY: obama
 obama: ## Run the Obama agent
@@ -107,12 +120,13 @@ shell: ## Start Python shell with environment loaded
 
 .PHONY: demo
 demo: ## Run a quick demo of all agents
-	@echo "$(GREEN)🤖 Welcome to agents.michelle Demo!$(NC)"
+	@echo "$(GREEN)🎭 Welcome to agents.michelle Demo!$(NC)"
 	@echo ""
 	@echo "$(YELLOW)Current Configuration:$(NC)"
 	@$(MAKE) check-config
 	@echo ""
 	@echo "$(YELLOW)Running demo of all agents...$(NC)"
+	@echo "$(BLUE)Try 'make interactive' for the full Michelle Pfeiffer experience!$(NC)"
 	@echo ""
 	@$(MAKE) run-all
 
