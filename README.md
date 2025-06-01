@@ -1,159 +1,161 @@
-# agents.michelle
+# agents.michelle 🎭
 
-A simple AI agent implementation using OpenAI's GPT models. This project demonstrates how to create and run an AI assistant that can generate creative content like haikus about programming concepts.
+An AI agent system featuring **Michelle Pfeiffer** as the main agent with her director friends **Tim Burton** and **Martin Scorsese**. This project demonstrates OpenAI's agents SDK handoff functionality in an engaging Hollywood context.
 
-## 🚀 Features
+## 🌟 Features
 
-- Simple AI agent implementation using the `agents` library
-- OpenAI GPT model integration
-- Creative text generation (poetry, haikus, etc.)
-- Virtual environment setup for clean dependency management
+- **🎭 Michelle Pfeiffer Agent System** - Interactive conversations with automatic handoffs
+- **🎨 Tim Burton** - Gothic filmmaker personality (Batman Returns collaboration)
+- **🎬 Martin Scorsese** - Cinema master personality (The Age of Innocence collaboration)
+- **Automatic Handoffs** - Smart routing based on conversation topics
+- **Interactive Mode** - Continuous conversations with context preservation
+- **Creative Agents** - Poetry, storytelling, and creative writing assistants
+- **Pydantic Configuration** - Type-safe, environment-based settings
 
-## 📋 Prerequisites
+## 🎬 The Cast
 
-- Python 3.13.3 (or compatible version)
-- OpenAI API key
-- Access to OpenAI GPT models
+### Michelle Pfeiffer (Main Agent) 🎭
+The elegant, accomplished actress who can discuss her career, acting techniques, and collaborations. She intelligently hands off conversations to her director friends when appropriate.
 
-## 🛠️ Setup
+### Tim Burton 🎨
+The gothic visionary director. When you ask about **Batman Returns**, **Catwoman**, or **gothic filmmaking**, Michelle hands you off to Tim for his unique perspective.
 
-### 1. Clone and Navigate
+### Martin Scorsese 🎬
+The passionate cinema historian. Questions about **The Age of Innocence**, **method acting**, or **period films** get routed to Martin for his deep insights.
+
+## 🚀 Quick Start
+
+### 1. Setup
 ```bash
 cd projects/agents.michelle
-```
-
-### 2. Virtual Environment
-The project includes a pre-configured virtual environment in the `env/` directory:
-
-```bash
-# Activate the virtual environment
-source env/bin/activate
-```
-
-### 3. Environment Variables
-Ensure your OpenAI API key is set:
-
-```bash
+source env/bin/activate  # Virtual environment already configured
 export OPENAI_API_KEY="your-api-key-here"
 ```
 
-### 4. Dependencies
-The required dependencies should already be installed in the virtual environment:
-- `agents` - The main agent framework
-- `openai` - OpenAI API client
-- `pydantic` - Data validation and settings management
-- `pydantic-settings` - Environment-based settings
-- `PyYAML` - YAML configuration file support
-
-If you need to reinstall dependencies:
+### 2. Try the Michelle Pfeiffer System
 ```bash
-pip install agents openai pydantic pydantic-settings PyYAML
+# Single interaction example
+make pfeiffer
+
+# Interactive conversation mode  
+make interactive
+
+# Test handoff functionality
+make test-handoffs
 ```
 
-## 🛠️ Makefile Features
-
-The project includes a comprehensive Makefile with the following categories of targets:
-
-### Agent Execution
-- `make simple` - Run the creative assistant agent
-- `make pfeiffer` - Run the multi-language agent system  
-- `make obama` - Run the Obama knowledge agent
-- `make run-all` / `make all` - Run all agents sequentially
-
-### Configuration & Testing  
-- `make check-config` - Validate configuration files
-- `make list-models` - List available OpenAI models
-- `make test-api` - Test OpenAI API connection
-- `make status` - Show project status and configuration
-
-### Development & Maintenance
-- `make setup` / `make install` - Set up virtual environment
-- `make clean` - Clean cache and temporary files
-- `make update` - Update all dependencies
-- `make requirements` - Generate requirements.txt
-
-### Interactive Features
-- `make demo` - Run a full demo of all agents
-- `make shell` - Start Python shell with settings loaded
-- `make creative` - Run custom creative task
-- `make spanish` - Test Spanish language agent specifically
-
-### Help
-- `make help` - Show all available targets (default)
-
-## 🎯 Usage
-
-### Quick Start with Makefile
-This project includes a comprehensive Makefile for easy management:
-
+### 3. Other Agents
 ```bash
-# Show all available commands
-make help
-
-# Run all agents sequentially  
-make run-all
-
-# Run individual agents
-make simple      # Creative assistant
-make pfeiffer    # Multi-language system
-make obama       # Obama knowledge agent
-
-# Project management
-make status      # Show project status
-make check-config # Validate configuration
+make simple     # Creative writing assistant
+make obama      # Michelle Obama knowledge agent
+make run-all    # Try everything
 ```
 
-### Manual Usage
-You can also run agents directly:
+## 🎯 Usage Examples
 
+### Interactive Michelle Pfeiffer System
 ```bash
-python src/agent/simple_agent.py
-python src/agent/pfeiffer.py
-python src/agent/obama.py
+make interactive
+```
+🎭 Michelle Pfeiffer Agent System
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👋 Hello! I'm Michelle Pfeiffer. I'm here to chat about my career,
+   my films, and the wonderful directors I've worked with.
+
+   I can handoff our conversation to:
+   🎨 Tim Burton (Batman Returns director)
+   🎬 Martin Scorsese (The Age of Innocence director)
+
+💬 You: Tell me about Batman Returns
+🎨 Tim Burton: Ah, Batman Returns—what a wonderfully dark playground...
 ```
 
-### Expected Output
-The script will generate a haiku about recursion in programming. Example output:
+### Sample Conversations
+- **"Tell me about Batman Returns"** → Handoff to Tim Burton
+- **"What about The Age of Innocence?"** → Handoff to Martin Scorsese  
+- **"How do you approach character development?"** → Stays with Michelle
+- **"What's your favorite acting technique?"** → Michelle discusses her craft
+
+## 🛠️ Makefile Commands
+
+### 🎭 Main Agent System
+```bash
+make pfeiffer           # Run Michelle Pfeiffer system (single interaction)
+make interactive        # Interactive conversation mode
+make pfeiffer-interactive # Alias for interactive mode
+make test-handoffs      # Test the handoff functionality
 ```
-Code calls itself back,  
-Infinite loops or returns—  
-Logic spins in time.
+
+### 🤖 Other Agents
+```bash
+make simple             # Creative assistant agent
+make obama              # Michelle Obama knowledge agent  
+make run-all            # Run all agents sequentially
+```
+
+### 🔧 Development & Testing
+```bash
+make check-config       # Validate configuration files
+make test-api          # Test OpenAI API connection
+make list-models       # Show available models
+make status            # Project status and info
+```
+
+### 🎨 Interactive Features
+```bash
+make demo              # Full demo of all agents
+make shell             # Python shell with agents loaded
+make creative          # Custom creative writing task
+```
+
+### 🧹 Maintenance
+```bash
+make setup             # Set up virtual environment
+make clean             # Clean cache and temp files
+make update            # Update dependencies
+make help              # Show all commands
 ```
 
 ## 🔧 Configuration
 
-### Pydantic Configuration System
-The project uses a Pydantic-based configuration system similar to agents.tracie for better maintainability and validation.
+The project uses a Pydantic-based configuration system with emoji support:
 
-#### Configuration Files
-- `config/settings.yaml` - Main configuration file
-- `src/agent/settings.py` - Pydantic settings classes
-
-#### Model Selection
-You can configure the model in `config/settings.yaml`:
-
+### `config/settings.yaml`
 ```yaml
+# Model Configuration
 model:
-  name: gpt-4o-2024-11-20     # Working model for this project
-  temperature: 0.7            # Creative responses for haikus/poetry
-  max_tokens: 2000            # Reasonable limit for creative tasks
+  name: gpt-4o-2024-11-20
+  temperature: 0.7
+  max_tokens: 2000
+
+# Agent Configuration for Michelle Pfeiffer System
+agents:
+  michelle:
+    name: "Michelle Pfeiffer"
+    emoji: "🎭"
+    instructions: |
+      You are Michelle Pfeiffer, the accomplished actress...
+      When users ask about Batman Returns, you can handoff to Tim Burton...
+      
+  tim_burton:
+    name: "Tim Burton"  
+    emoji: "🎨"
+    instructions: |
+      You are Tim Burton, the visionary director...
+      
+  martin_scorsese:
+    name: "Martin Scorsese"
+    emoji: "🎬" 
+    instructions: |
+      You are Martin Scorsese, the master filmmaker...
 ```
 
-Or override via environment variables:
+### Environment Variables
 ```bash
-export MODEL_NAME="gpt-4"
-export MODEL_TEMPERATURE="0.5"
-```
-
-### Available Models
-To check which models are available with your API key:
-
-```python
-import openai
-client = openai.OpenAI()
-models = client.models.list()
-available_models = [m.id for m in models.data if 'gpt' in m.id]
-print(available_models)
+export OPENAI_API_KEY="your-key"
+export MODEL_NAME="gpt-4o-2024-11-20"  # Optional override
+export MODEL_TEMPERATURE="0.7"         # Optional override
 ```
 
 ## 📁 Project Structure
@@ -161,87 +163,123 @@ print(available_models)
 ```
 agents.michelle/
 ├── config/
-│   └── settings.yaml      # Configuration file
-├── env/                   # Virtual environment
-├── src/
-│   └── agent/
-│       ├── settings.py    # Pydantic settings classes
-│       ├── simple_agent.py # Simple agent with configuration
-│       ├── pfeiffer.py    # Multi-language agent system
-│       └── obama.py       # Obama knowledge agent
-├── Makefile              # Project automation and management
-├── workflow_state.md     # Development workflow tracking
-├── README.md            # This file
-├── .gitignore          # Git ignore rules
-└── LICENSE             # Project license
+│   └── settings.yaml          # Agent configurations with emojis
+├── src/agent/
+│   ├── settings.py           # Pydantic configuration classes
+│   ├── pfeiffer.py           # Michelle Pfeiffer agent system ⭐
+│   ├── simple_agent.py       # Creative writing assistant
+│   └── obama.py              # Michelle Obama knowledge agent
+├── tests/
+│   ├── test_agents.py        # Individual agent tests
+│   ├── test_handoffs.py      # Handoff functionality tests
+│   └── test_interactive.py   # Interactive mode tests
+├── Makefile                  # Project automation (22 targets)
+├── README.md                 # This file
+└── AGENT_DESIGN_PLAN.md     # Detailed system design
+```
+
+## 🧪 Testing
+
+### Automated Tests
+```bash
+make test              # Run all tests
+make test-handoffs     # Test agent handoff functionality
+make test-interactive  # Test interactive modes
+```
+
+### Manual Testing
+```bash
+# Test Michelle → Tim Burton handoff
+echo "Tell me about Batman Returns" | make interactive
+
+# Test Michelle → Martin Scorsese handoff  
+echo "Tell me about The Age of Innocence" | make interactive
+
+# Test general conversation stays with Michelle
+echo "What's your favorite acting method?" | make interactive
+```
+
+## 🎨 Interactive Modes
+
+All agents now support interactive mode with the `--interactive` flag:
+
+### Michelle Pfeiffer System
+```bash
+python src/agent/pfeiffer.py --interactive
+```
+
+### Creative Assistant
+```bash
+python src/agent/simple_agent.py --interactive
+```
+
+### Michelle Obama Agent
+```bash
+python src/agent/obama.py --interactive
 ```
 
 ## 🐛 Troubleshooting
 
 ### Model Access Issues
-If you encounter "model not found" errors:
-
-1. **Check Available Models**: Use the model checking script above
-2. **Update Model Name**: Use the exact model ID from your available models list
-3. **API Key Permissions**: Ensure your API key has access to the desired models
-
-### Common Error: `Project does not have access to model`
-This means your OpenAI project doesn't have access to the specific model version. Try using:
-- `gpt-4o-2024-11-20`
-- `gpt-4`
-- `chatgpt-4o-latest`
-
-### Virtual Environment Issues
-If the virtual environment doesn't work:
+The project is configured to use `gpt-4o-2024-11-20`. If you encounter access issues:
 
 ```bash
-# Create a new virtual environment
-python3.13 -m venv env
-source env/bin/activate
-pip install agents openai
+make list-models        # Check available models
+make test-api          # Test API connection
 ```
 
-## 💡 Customization
+### Handoff Not Working
+If agents aren't handing off correctly:
 
-### Changing the Task
-Modify the task in `src/agent/agent.py`:
-
-```python
-result = Runner.run_sync(agent, "Your custom prompt here")
+```bash
+make test-handoffs     # Run handoff tests
+make check-config      # Validate configuration
 ```
 
-### Modifying Agent Instructions
-Update the agent's behavior:
+### Common Solutions
+- Ensure `OPENAI_API_KEY` is set
+- Try different model: edit `config/settings.yaml`
+- Check model access: `make list-models`
+- Verify configuration: `make check-config`
+
+## 🎯 How Handoffs Work
+
+The system uses OpenAI's agents SDK built-in handoff functionality:
 
 ```python
-agent = Agent(
-    name="Assistant", 
-    instructions="Your custom instructions here",
-    model="gpt-4o-2024-11-20"
+# Michelle Pfeiffer (main agent) with handoffs
+michelle_agent = Agent(
+    name="Michelle Pfeiffer",
+    instructions="You are Michelle Pfeiffer...",
+    model=settings.model_name,
+    handoffs=[tim_burton_agent, martin_scorsese_agent],  # Magic happens here!
 )
 ```
 
-## 📝 Example Variations
+When Michelle detects questions about:
+- **Batman Returns, Catwoman, gothic films** → Hands off to Tim Burton
+- **The Age of Innocence, method acting, period films** → Hands off to Martin Scorsese
+- **General acting, career questions** → Stays with Michelle
 
-### Different Creative Tasks
-```python
-# Generate a limerick about coding
-result = Runner.run_sync(agent, "Write a limerick about debugging code.")
+## 🌟 Example Outputs
 
-# Explain a concept
-result = Runner.run_sync(agent, "Explain machine learning in simple terms.")
+### Tim Burton Response (Batman Returns)
+> "Ah, Batman Returns—what a wonderfully dark playground that was to create in! Working on that film was like being unleashed to construct a strange, gothic snow globe, and Michelle Pfeiffer as Catwoman was absolutely at the heart of it all..."
 
-# Code generation
-result = Runner.run_sync(agent, "Write a Python function to calculate fibonacci numbers.")
-```
+### Martin Scorsese Response (Age of Innocence)
+> "Ah, *The Age of Innocence*. That project is very dear to me. It's a love story, yes, but it's also a story about repression, appearances, and the cage of societal expectation. Edith Wharton's novel—it's just exquisite..."
+
+### Michelle Pfeiffer Response (General)
+> "You know, after all these years in the business, I've learned that every role teaches you something new about yourself and about the craft..."
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+2. Create a feature branch  
+3. Add tests for new functionality
+4. Ensure all tests pass: `make test`
+5. Update documentation
+6. Submit a pull request
 
 ## 📄 License
 
@@ -249,12 +287,12 @@ This project is licensed under the terms specified in the LICENSE file.
 
 ## 🆘 Support
 
-If you encounter issues:
-1. Check the troubleshooting section above
-2. Verify your OpenAI API key and model access
-3. Ensure all dependencies are properly installed
-4. Review the workflow_state.md for development notes
+For issues or questions:
+1. Check this README and troubleshooting section
+2. Run `make status` to check configuration
+3. Use `make test-handoffs` to verify functionality
+4. Review `AGENT_DESIGN_PLAN.md` for system design details
 
 ---
 
-**Note**: This project was successfully tested with Python 3.13.3 and OpenAI's gpt-4o-2024-11-20 model.
+**✨ Built with OpenAI's agents SDK handoff functionality - Simple, elegant, and powerful!**

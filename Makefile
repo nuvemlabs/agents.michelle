@@ -28,7 +28,7 @@ setup: ## Set up the virtual environment and install dependencies
 	@echo "$(GREEN)Setting up virtual environment...$(NC)"
 	python3.13 -m venv $(VENV_DIR)
 	$(PIP) install --upgrade pip
-	$(PIP) install agents openai pydantic pydantic-settings PyYAML
+	$(PIP) install agents openai pydantic pydantic-settings PyYAML pytest
 	@echo "$(GREEN)Setup complete!$(NC)"
 
 .PHONY: install
@@ -37,7 +37,7 @@ install: setup ## Alias for setup
 .PHONY: deps
 deps: ## Install/update dependencies
 	@echo "$(GREEN)Installing dependencies...$(NC)"
-	$(PIP) install --upgrade agents openai pydantic pydantic-settings PyYAML
+	$(PIP) install --upgrade agents openai pydantic pydantic-settings PyYAML pytest
 
 # Agent execution targets
 .PHONY: simple
@@ -67,12 +67,44 @@ test-handoffs: ## Test the handoff functionality between agents
 	@echo "$(GREEN)Testing agent handoffs...$(NC)"
 	$(PYTHON) test_system.py
 
+.PHONY: test
+test: ## Run all tests (pytest and handoff tests)
+	@echo "$(GREEN)Running comprehensive test suite...$(NC)"
+	@echo "$(YELLOW)----------------------------------------$(NC)"
+	@echo "$(GREEN)1. Running handoff system tests...$(NC)"
+	$(PYTHON) test_system.py
+	@echo ""
+	@echo "$(GREEN)2. Running pytest unit tests...$(NC)"
+	$(PYTHON) -m pytest tests/ -v
+	@echo "$(YELLOW)----------------------------------------$(NC)"
+	@echo "$(GREEN)All tests completed!$(NC)"
+
+.PHONY: test-unit
+test-unit: ## Run unit tests with pytest
+	@echo "$(GREEN)Running unit tests...$(NC)"
+	$(PYTHON) -m pytest tests/ -v
+
+.PHONY: test-integration
+test-integration: ## Run integration tests (requires API key)
+	@echo "$(GREEN)Running integration tests...$(NC)"
+	$(PYTHON) -m pytest tests/ -v -m integration
+
 .PHONY: obama
-obama: ## Run the Obama agent
-	@echo "$(GREEN)Running Obama agent...$(NC)"
+obama: ## Run the Michelle Obama agent
+	@echo "$(GREEN)Running Michelle Obama agent...$(NC)"
 	@echo "$(YELLOW)========================================$(NC)"
 	$(PYTHON) $(SRC_DIR)/obama.py
 	@echo "$(YELLOW)========================================$(NC)"
+
+.PHONY: simple-interactive
+simple-interactive: ## Run simple agent in interactive mode
+	@echo "$(GREEN)Starting Creative Assistant interactive mode...$(NC)"
+	$(PYTHON) $(SRC_DIR)/simple_agent.py --interactive
+
+.PHONY: obama-interactive
+obama-interactive: ## Run Michelle Obama agent in interactive mode
+	@echo "$(GREEN)Starting Michelle Obama Knowledge Assistant interactive mode...$(NC)"
+	$(PYTHON) $(SRC_DIR)/obama.py --interactive
 
 # Run all agents
 .PHONY: run-all
@@ -143,8 +175,8 @@ status: ## Show project status and configuration
 	@echo ""
 	@echo "$(YELLOW)Available Agents:$(NC)"
 	@echo "  - simple_agent.py (Creative Assistant)"
-	@echo "  - pfeiffer.py (Multi-language Agent System)"
-	@echo "  - obama.py (Obama Knowledge Agent)"
+	@echo "  - pfeiffer.py (Michelle Pfeiffer Agent System)"
+	@echo "  - obama.py (Michelle Obama Knowledge Agent)"
 
 .PHONY: env-check
 env-check: ## Check if virtual environment is properly set up
