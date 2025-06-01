@@ -50,19 +50,66 @@ If you need to reinstall dependencies:
 pip install agents openai pydantic pydantic-settings PyYAML
 ```
 
+## 🛠️ Makefile Features
+
+The project includes a comprehensive Makefile with the following categories of targets:
+
+### Agent Execution
+- `make simple` - Run the creative assistant agent
+- `make pfeiffer` - Run the multi-language agent system  
+- `make obama` - Run the Obama knowledge agent
+- `make run-all` / `make all` - Run all agents sequentially
+
+### Configuration & Testing  
+- `make check-config` - Validate configuration files
+- `make list-models` - List available OpenAI models
+- `make test-api` - Test OpenAI API connection
+- `make status` - Show project status and configuration
+
+### Development & Maintenance
+- `make setup` / `make install` - Set up virtual environment
+- `make clean` - Clean cache and temporary files
+- `make update` - Update all dependencies
+- `make requirements` - Generate requirements.txt
+
+### Interactive Features
+- `make demo` - Run a full demo of all agents
+- `make shell` - Start Python shell with settings loaded
+- `make creative` - Run custom creative task
+- `make spanish` - Test Spanish language agent specifically
+
+### Help
+- `make help` - Show all available targets (default)
+
 ## 🎯 Usage
 
-### Basic Usage
-Run the simple agent script:
+### Quick Start with Makefile
+This project includes a comprehensive Makefile for easy management:
+
+```bash
+# Show all available commands
+make help
+
+# Run all agents sequentially  
+make run-all
+
+# Run individual agents
+make simple      # Creative assistant
+make pfeiffer    # Multi-language system
+make obama       # Obama knowledge agent
+
+# Project management
+make status      # Show project status
+make check-config # Validate configuration
+```
+
+### Manual Usage
+You can also run agents directly:
 
 ```bash
 python src/agent/simple_agent.py
-```
-
-Or run the multi-language triage system:
-
-```bash
 python src/agent/pfeiffer.py
+python src/agent/obama.py
 ```
 
 ### Expected Output
@@ -120,7 +167,9 @@ agents.michelle/
 │   └── agent/
 │       ├── settings.py    # Pydantic settings classes
 │       ├── simple_agent.py # Simple agent with configuration
-│       └── pfeiffer.py    # Multi-language agent system
+│       ├── pfeiffer.py    # Multi-language agent system
+│       └── obama.py       # Obama knowledge agent
+├── Makefile              # Project automation and management
 ├── workflow_state.md     # Development workflow tracking
 ├── README.md            # This file
 ├── .gitignore          # Git ignore rules

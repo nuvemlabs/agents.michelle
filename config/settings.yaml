@@ -4,7 +4,7 @@
 
 # Model Configuration
 model:
-  name: gpt-4o-mini     # Working model for this project
+  name: gpt-4o-2024-11-20     # Working model for this project
   temperature: 0.7            # Creative responses for haikus/poetry
   max_tokens: 2000            # Reasonable limit for creative tasks
 
