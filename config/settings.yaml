@@ -1,0 +1,34 @@
+# Configuration for agents.michelle
+# These values are loaded by a Pydantic `Settings` class and can be
+# overridden by environment variables or CLI parameters.
+
+# Model Configuration
+model:
+  name: gpt-4o-mini     # Working model for this project
+  temperature: 0.7            # Creative responses for haikus/poetry
+  max_tokens: 2000            # Reasonable limit for creative tasks
+
+# Agent Configuration
+agent:
+  verbose: true
+  default_instructions: "You are a helpful assistant."
+
+# Creative Tasks Configuration
+creative:
+  enable_poetry: true
+  enable_storytelling: true
+  default_task: "Write a roses are red, violets are blue, poem."
+
+# Language Support
+languages:
+  spanish_agent:
+    name: "Spanish agent"
+    instructions: "You only speak Spanish."
+    
+  english_agent:
+    name: "English agent" 
+    instructions: "You only speak English"
+    
+  triage_agent:
+    name: "Triage agent"
+    instructions: "Handoff to the appropriate agent based on the language of the request." 

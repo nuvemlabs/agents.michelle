@@ -41,14 +41,28 @@ export OPENAI_API_KEY="your-api-key-here"
 The required dependencies should already be installed in the virtual environment:
 - `agents` - The main agent framework
 - `openai` - OpenAI API client
+- `pydantic` - Data validation and settings management
+- `pydantic-settings` - Environment-based settings
+- `PyYAML` - YAML configuration file support
+
+If you need to reinstall dependencies:
+```bash
+pip install agents openai pydantic pydantic-settings PyYAML
+```
 
 ## 🎯 Usage
 
 ### Basic Usage
-Run the main agent script:
+Run the simple agent script:
 
 ```bash
-python src/agent/agent.py
+python src/agent/simple_agent.py
+```
+
+Or run the multi-language triage system:
+
+```bash
+python src/agent/pfeiffer.py
 ```
 
 ### Expected Output
@@ -61,15 +75,27 @@ Logic spins in time.
 
 ## 🔧 Configuration
 
-### Model Selection
-The agent is configured to use `gpt-4o-2024-11-20`. If you need to use a different model, modify the `model` parameter in `src/agent/agent.py`:
+### Pydantic Configuration System
+The project uses a Pydantic-based configuration system similar to agents.tracie for better maintainability and validation.
 
-```python
-agent = Agent(
-    name="Assistant", 
-    instructions="You are a helpful assistant", 
-    model="gpt-4o-2024-11-20"  # Change this to your preferred model
-)
+#### Configuration Files
+- `config/settings.yaml` - Main configuration file
+- `src/agent/settings.py` - Pydantic settings classes
+
+#### Model Selection
+You can configure the model in `config/settings.yaml`:
+
+```yaml
+model:
+  name: gpt-4o-2024-11-20     # Working model for this project
+  temperature: 0.7            # Creative responses for haikus/poetry
+  max_tokens: 2000            # Reasonable limit for creative tasks
+```
+
+Or override via environment variables:
+```bash
+export MODEL_NAME="gpt-4"
+export MODEL_TEMPERATURE="0.5"
 ```
 
 ### Available Models
@@ -87,14 +113,18 @@ print(available_models)
 
 ```
 agents.michelle/
-├── env/                    # Virtual environment
+├── config/
+│   └── settings.yaml      # Configuration file
+├── env/                   # Virtual environment
 ├── src/
 │   └── agent/
-│       └── agent.py       # Main agent script
-├── workflow_state.md      # Development workflow tracking
-├── README.md             # This file
-├── .gitignore           # Git ignore rules
-└── LICENSE              # Project license
+│       ├── settings.py    # Pydantic settings classes
+│       ├── simple_agent.py # Simple agent with configuration
+│       └── pfeiffer.py    # Multi-language agent system
+├── workflow_state.md     # Development workflow tracking
+├── README.md            # This file
+├── .gitignore          # Git ignore rules
+└── LICENSE             # Project license
 ```
 
 ## 🐛 Troubleshooting
